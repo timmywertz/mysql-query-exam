@@ -49,7 +49,7 @@ WHERE scheduledDepartDateTime = actualDepartDateTime;
 6)Provide a list of airlines, flight numbers, gates, status, and arrival times arriving into Charlotte (CLT) on 10-30-2017. Order your results by the arrival time.
 */
 
-SELECT a.name as Airline, f.flightNumber as Flight, f.gate as Gate, f.scheduledArriveDateTime as Arrival, f.status as Status
+SELECT a.name as Airline, f.flightNumber as Flight, f.gate as Gate, TIME(f.scheduledArriveDateTime) as Arrival, f.status as Status
 FROM flight f
 JOIN airline a ON f.airlineID = a.ID
 WHERE f.arriveAirport = 'CLT' AND DATE(f.scheduledArriveDateTime) = '2017-10-30'
